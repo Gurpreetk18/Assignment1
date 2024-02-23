@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Images</title>
+    <style>
+        #select-doctor {
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: rgb(109, 195, 153);
+            text-align: center;
+            color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 100px;
+        }
+    
+        .image-row {
+            display: flex;
+            gap: 50px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 35px;
+            justify-content: space-between; /* Add this line to evenly space the images */
+        }
+    
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
+    
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* Optional: Add rounded corners to the image */
+            transition: transform 0.3s ease-in-out;
+            display: block;
+        }
+    
+        .image-container p {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333; /* Default text color */
+            transition: color 0.3s ease-in-out;
+        }
+    
+        .image-container:hover img {
+            transform: scale(1.1); /* Increase scale on hover */
+        }
+    
+        .image-container:hover p {
+            color: rgb(109, 195, 153); /* Change text color on hover */
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <p id="select-doctor">Select Doctor</p>
+    <div class="image-container" id="image-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Replace the placeholder URLs with actual image URLs
+            const imageData = [
+                { "image": "5.jpg", "text": "Dr. Emily Johnson - Cardiologist" },
+                { "image": "6.jpg", "text": "Dr. Benjamin Davis - Orthopedic Surgeon" },
+                { "image": "7.jpg", "text": "Dr. Olivia Martinez - Pediatrician" },
+                { "image": "11.jpg", "text": "Dr. William Anderson - Neurologist" },
+                { "image": "15.jpg", "text": "Dr. Sophia White - Dermatologist" },
+                { "image": "19.jpg", "text": "Dr. Daniel Robinson - Gastroenterologist" },
+                { "image": "16.jpg", "text": "Dr. Ava Taylor - Ophthalmologist" },
+                { "image": "10.jpg", "text": "Dr. Elijah Wright - Pulmonologist" },
+                { "image": "8.jpg", "text": "Text 9" },
+                { "image": "1.jpg", "text": "Text 10" },
+                { "image": "12.jpg", "text": "Text 11" },
+                { "image": "17.jpg", "text": "Text 12" },
+                { "image": "13.jpg", "text": "Text 13" },
+                { "image": "3.jpg", "text": "Text 14" },
+                { "image": "1.jpg", "text": "Text 15" },
+                { "image": "4.jpg", "text": "Text 16" },
+                { "image": "17.jpg", "text": "Text 17" },
+                { "image": "2.jpg", "text": "Text 18" },
+                { "image": "19.jpg", "text": "Text 19" },
+                { "image": "1.jpg", "text": "Text 20" },
+                { "image": "3.jpg", "text": "Text 21" },
+                { "image": "4.jpg", "text": "Text 22" },
+                { "image": "11.jpg", "text": "Text 23" },
+                { "image": "5.jpg", "text": "Text 24" },
+                { "image": "3.jpg", "text": "Text 25" },
+                // Add more image objects as needed
+                // ...
+            ];
+            
+            const imageContainer = document.getElementById("image-container");
+
+            imageData.forEach(item => {
+                const imageRow = document.createElement("div");
+                imageRow.className = "image-row";
+
+                const imgElement = document.createElement("img");
+                imgElement.src = item.image;
+                imgElement.alt = "User Image";
+
+                const textElement = document.createElement("p");
+                textElement.innerText = item.text;
+
+                const container = document.createElement("div");
+                container.appendChild(imgElement);
+                container.appendChild(textElement);
+
+                imageRow.appendChild(container);
+                imageContainer.appendChild(imageRow);
+
+                container.addEventListener("mouseenter", function() {
+                    imgElement.style.transform = "scale(1.1)";
+                    textElement.style.color = "rgb(109, 195, 153)";
+                });
+
+                container.addEventListener("mouseleave", function() {
+                    imgElement.style.transform = "scale(1)";
+                    textElement.style.color = "#333";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
